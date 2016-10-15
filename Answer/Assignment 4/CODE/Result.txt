@@ -1,0 +1,51 @@
+>> peg()
+coe_scale is 0.1 :
+testing1-Hinge loss:   error rate is:0.186
+testing2-Hinge loss:    error rate is:0.201
+testing1-Logit loss:    error rate is:0.199
+testing2-Logit loss:    error rate is:0.183
+coe_scale is 0.2 :
+testing1-Hinge loss:   error rate is:0.185
+testing2-Hinge loss:    error rate is:0.303
+testing1-Logit loss:    error rate is:0.229
+testing2-Logit loss:    error rate is:0.177
+coe_scale is 0.3 :
+testing1-Hinge loss:   error rate is:0.170
+testing2-Hinge loss:    error rate is:0.197
+testing1-Logit loss:    error rate is:0.188
+testing2-Logit loss:    error rate is:0.252
+coe_scale is 0.4 :
+testing1-Hinge loss:   error rate is:0.201
+testing2-Hinge loss:    error rate is:0.226
+testing1-Logit loss:    error rate is:0.242
+testing2-Logit loss:    error rate is:0.238
+coe_scale is 0.5 :
+testing1-Hinge loss:   error rate is:0.165
+testing2-Hinge loss:    error rate is:0.201
+testing1-Logit loss:    error rate is:0.186
+testing2-Logit loss:    error rate is:0.207
+coe_scale is 0.6 :
+testing1-Hinge loss:   error rate is:0.163
+testing2-Hinge loss:    error rate is:0.178
+testing1-Logit loss:    error rate is:0.187
+testing2-Logit loss:    error rate is:0.202
+coe_scale is 0.7 :
+testing1-Hinge loss:   error rate is:0.191
+testing2-Hinge loss:    error rate is:0.166
+testing1-Logit loss:    error rate is:0.196
+testing2-Logit loss:    error rate is:0.187
+coe_scale is 0.8 :
+testing1-Hinge loss:   error rate is:0.170
+testing2-Hinge loss:    error rate is:0.181
+testing1-Logit loss:    error rate is:0.178
+testing2-Logit loss:    error rate is:0.173
+coe_scale is 0.9 :
+testing1-Hinge loss:   error rate is:0.157
+testing2-Hinge loss:    error rate is:0.165
+testing1-Logit loss:    error rate is:0.216
+testing2-Logit loss:    error rate is:0.167
+coe_scale is 1.0 :
+testing1-Hinge loss:   error rate is:0.242
+testing2-Hinge loss:    error rate is:0.179
+testing1-Logit loss:    error rate is:0.176
+testing2-Logit loss:    error rate is:0.190
