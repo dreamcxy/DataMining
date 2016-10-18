@@ -24,7 +24,7 @@ covTrainMatrix = np.cov(newDataTrainMatrix, rowvar=0)
 
 eigTrainValues, eigTrainVectors = np.linalg.eig(np.mat(covTrainMatrix))
 
-k = 10
+k = 20
 kTrainEigValues = np.argsort(eigTrainValues)[-1:-(k + 1):-1]
 kTrainEigVectors = eigTrainVectors[:, kTrainEigValues]
 lowTrainDegreeDatMat = newDataTrainMatrix * kTrainEigVectors
@@ -62,4 +62,4 @@ for testVector in lowTestDegreeDatMat:
     if newTestDegree == oldTestDegree[position]:
         correct = correct + 1
     position = position + 1
-print correct / 103.0
+print correct / float(lowTestDegreeDatMat.shape[0])

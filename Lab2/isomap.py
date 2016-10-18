@@ -92,16 +92,6 @@ for i in range(0, nTrain):
     for j in range(1, len(neighborPosition)):
         trainingGraph.addEdge(i, neighborPosition[j], neighbordistance[j])
 distanceMatrix = [[]] * nTrain
-# for i in range(0, nTrain):
-#     for j in range(0, nTrain):
-#         if i == j:
-#             distanceMatrix[i].append(0)
-#         else:
-#             if (i not in [83, 84, 85, 86, 87, 88]) and (j not in [83, 84, 85, 86, 87, 88]):
-#                 distanceMatrix[i].append(shortestPath(trainingGraph, i, j))
-#             else:
-#                 distanceMatrix[i].append(np.linalg.norm(
-#                     oldDataTrainMatrix[i] - oldDataTrainMatrix[j]))
 for i in range(0, nTrain):
     for j in range(0, nTrain):
         if i == j:
@@ -154,16 +144,6 @@ for i in range(0, nTest):
     for j in range(1, len(neighborPosition)):
         testGraph.addEdge(i, neighborPosition[j], neighbordistance[j])
 distanceMatrix = [[]] * nTest
-# for i in range(0, nTest):
-#     for j in range(0, nTest):
-#         if i == j:
-#             distanceMatrix[i].append(0)
-#         else:
-#             if (i not in [83, 84, 85, 86, 87, 88]) and (j not in [83, 84, 85, 86, 87, 88]):
-#                 distanceMatrix[i].append(shortestPath(testGraph, i, j))
-#             else:
-#                 distanceMatrix[i].append(np.linalg.norm(
-#                     oldDataTestMatrix[i] - oldDataTestMatrix[j]))
 for i in range(0, nTest):
     for j in range(0, nTest):
         if i == j:
@@ -183,7 +163,7 @@ for testVector in lowTest:
     minPosition = minDistance.argmin()
     newTestDegree = dataTrainDegree[minPosition]
     if newTestDegree == dataTestDegree[position]:
-        correct = correct + 1
+        correct += 1
     position = position + 1
 
 print correct / float(nTest)
