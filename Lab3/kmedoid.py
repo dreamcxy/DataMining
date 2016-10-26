@@ -63,9 +63,15 @@ print('')
 print('clustering result:')
 
 countError = 0
+countGini = []
 for label in C:
+    countGini.append(len(C[label]))
     for point_idx in C[label]:
         # print('label {0}: {1}'.format(label, dataMatrix[point_idx]))
         countError += abs(dataLabelMatrix[point_idx] - label)
 
-print(dataMatrix.shape[0] - countError) / float(dataMatrix.shape[0])
+print('purity :')
+dataNumber = dataMatrix.shape[0]
+print(dataNumber - countError) / float(dataNumber)
+print('gini :')
+print 1 - (pow(countGini[0] / float(dataNumber), 2) + pow(countGini[1] / float(dataNumber), 2))
