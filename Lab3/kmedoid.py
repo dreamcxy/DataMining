@@ -56,9 +56,6 @@ dataMatrix = np.array(dataMatrix)
 dataLabelMatrix = np.array(dataLabelMatrix)
 D = pairwise_distances(dataMatrix, metric="euclidean")
 M, C = kMedoids(D, 2)
-# print('medois:')
-# for point_idx in M:
-#     print dataMatrix[point_idx]
 print('')
 print('clustering result:')
 
