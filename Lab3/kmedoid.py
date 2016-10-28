@@ -47,28 +47,16 @@ with open(Filename, 'r') as dataFile:
     for line in data:
         numbers = map(float, line.split(','))
         dataMatrix.append(numbers[:-1])
-        if numbers[-1] == -1:
-            dataLabelMatrix.append(0)
-        else:
-            dataLabelMatrix.append(numbers[-1])
-
-dataMatrix = np.array(dataMatrix)
+        dataLabelMatrix.append(numbers[-1])
+bn dataMatrix = np.array(dataMatrix)
 dataLabelMatrix = np.array(dataLabelMatrix)
 D = pairwise_distances(dataMatrix, metric="euclidean")
 M, C = kMedoids(D, 2)
+print('medois:')
+for point_idx in M:
+    print dataMatrix[point_idx]
 print('')
 print('clustering result:')
-
-countError = 0
-countGini = []
 for label in C:
-    countGini.append(len(C[label]))
     for point_idx in C[label]:
-        # print('label {0}: {1}'.format(label, dataMatrix[point_idx]))
-        countError += abs(dataLabelMatrix[point_idx] - label)
-
-print('purity :')
-dataNumber = dataMatrix.shape[0]
-print(dataNumber - countError) / float(dataNumber)
-print('gini :')
-print 1 - (pow(countGini[0] / float(dataNumber), 2) + pow(countGini[1] / float(dataNumber), 2))
+        print('label {0}: {1}'.format(label, dataMatrix[point_idx]))
