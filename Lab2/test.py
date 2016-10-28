@@ -75,9 +75,16 @@
 # # graph.addEdge('F', 'G', 2)
 
 # # print(shortestPath(graph, 'A', 'D'))  # output: (25, ['A', 'B', 'D'])
-import numpy as np
+# import numpy as np
 
-t = np.ones(3)
-print np.diag([2, 3])
-d = 3
-print float(d)
+# t = np.ones(3)
+# print np.diag([2, 3])
+# d = 3
+# print float(d)
+
+number = 128
+file = open("1.txt",'w')
+for i in range(0,128):
+	file.write("1")
+
+file.close()
