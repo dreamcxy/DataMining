@@ -1,6 +1,7 @@
-from numpy import *
-import random
 import math
+
+from numpy import *
+
 
 def load_data(file_name):
     data_matrix = []
@@ -32,14 +33,13 @@ def upgrade_theta(theta_0, alpha, gradient_function):
     return [theta_0_i - upgrade_theta_i for theta_0_i, upgrade_theta_i in
             zip(theta_0, alpha * gradient_function(theta_0))]
 
-def log_likelihood(theta, lamda, file_name):
-    data_matrix, data_label = load_data(file_name)
+
+def log_likelihood(theta, lamda, data_matrix, data_label):
     m, n = data_matrix.shape
-    theta = ones(n)
-    e = sum(log(1 + math.exp(-data_label[i]*dot(theta, data_matrix[i].T))) for i in range(0, m-1))
-    return e
+    return (sum(log(1 + math.exp(-data_label[i] * dot(theta, data_matrix[i].T))) for i in
+                range(0, m - 1)) / m) + lamda * linalg.norm(theta, 1)
 data_matrix, data_label = load_data('test.txt')
 m, n = data_matrix.shape
 theta = ones(n)
-
-print log_likelihood(theta, 0, 'test.txt')
+print log_likelihood(theta, 0, data_matrix, data_label)
+print data_matrix[0]
