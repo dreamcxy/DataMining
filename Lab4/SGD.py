@@ -1,5 +1,6 @@
 import random
 
+import matplotlib.pyplot as plt
 from numpy import *
 
 
@@ -9,7 +10,7 @@ def load_data(file_name):
     with open(file_name, 'r') as dataFile:
         data_lines = dataFile.readlines()
         for line in data_lines:
-            data = map(float, line.split(','))
+            data = map(float, line.strip().split())
             data_matrix.append(data[:-1])
             data_label.append(data[-1])
     return array(data_matrix), array(data_label)
@@ -68,4 +69,13 @@ def minimize_stochastic(file_name, target_function, gradient_function, iteration
     return min_theta
 
 
-print minimize_stochastic('training1.txt', log_likelihood, gradient_log_likelihood, 100)
+data_matrix, data_label = load_data('testSet.txt')
+m, n = data_matrix.shape
+theta = minimize_stochastic('testSet.txt', log_likelihood, gradient_log_likelihood, 500)
+for i in range(0, m - 1):
+    if data_label[i] == 0:
+        plt.plot(data_matrix[i][0], data_matrix[i][1], 'or')
+    else:
+        plt.plot(data_matrix[i][0], data_matrix[i][1], 'ob')
+
+plt.show()
