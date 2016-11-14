@@ -1,0 +1,2 @@
+python版本为3.4.3，装入扩展包numpy和scipy，包含代码kMeans.py，NMF.py和spectral.py，分别表示用k-Means算法进行聚类，用NMF聚类算法，
+和谱聚类算法进行聚类，用python IDLE打开，按F5即可运行。

@@ -1,0 +1,11 @@
+这个程序包括以下几个函数：
+createDataSet（）：用来创建交易记录数据库D
+canGen（）：由频繁k项集Lk生成候选k+1项集Ck+1
+pruning（）：根据频繁k项集Lk，对候选集Ck+1进行剪枝
+node类：为一个结构体，代表所建立的hash树的每一个结点
+buildHashTree():建立候选集Ck的哈希树
+travelTree():递归地遍历哈希树
+travelDataSet():用数据库中的每一条记录扫描哈希树
+supCount():统计哈希树叶子结点上的值，求出频繁项集的支持度
+apriori():主程序，调用Apriori算法
+writeResult():将程序的输出结果写入到result.txt文件中
