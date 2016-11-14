@@ -7,9 +7,8 @@ def load_data(file_name):
     data_matrix = []
     data_label = []
     with open(file_name, 'r') as dataFile:
-        data_lines = dataFile.readlines()[:1000]
+        data_lines = dataFile.readlines()
         for line in data_lines:
-            # data = map(float, line.strip().split())
             data = map(float, line.split(','))
             data_matrix.append(data[:-1])
             data_label.append(data[-1])
@@ -22,19 +21,18 @@ def calculate_norm_sub_gradient(theta, h=0.00001):
 
 def gradient_log_likelihood(data_matrix, data_label, lamda, theta, m):
     i = random.randint(0, m - 1)
-    # return (lamda * calculate_norm_sub_gradient(theta) + (-data_label[i] + sum(data_matrix[i]))) / (
-    #     m * (1 + exp(-data_label[i] * dot(theta, data_matrix[i].T))))
-    return (lamda * calculate_norm_sub_gradient(theta) / m) + ((-data_label[i] + sum(data_matrix[i])) * exp(-data_label[i] * dot(theta, data_matrix[i].T))) / (m * (1 + exp(-data_matrix[i] * dot(theta, data_matrix[i].T))))
+    return (lamda * calculate_norm_sub_gradient(theta) / m) + ((-data_label[i] * sum(data_matrix[i])) * exp(
+        -data_label[i] * dot(theta, data_matrix[i].T))) / (m * (
+            1 + exp(-data_matrix[i] * dot(theta, data_matrix[i].T))))
 
 
 def gradient_ridge_regression(data_matrix, data_label, lamda, theta, m):
     i = random.randint(0, m - 1)
-    return (2 * sum(data_matrix[i]) * (dot(theta, data_matrix[i].T) - data_label[i]) + 2 * lamda * linalg.norm(theta,
-                                                                                                               1)) / m
+    return (2 * sum(data_matrix[i]) * (dot(theta, data_matrix[i].T) - data_label[i]) + 2 * lamda * sum(data_matrix[i])) / m
 
 
-def upgrade_theta(theta_0, alpha, gradient_function, data_matrix, data_label, lamda, m):
-    return theta_0 - alpha * gradient_function(data_matrix, data_label, lamda, theta_0, m)
+def upgrade_theta(theta, alpha, gradient_function, data_matrix, data_label, lamda, m):
+    return theta - alpha * gradient_function(data_matrix, data_label, lamda, theta, m)
 
 
 def log_likelihood(theta, lamda, data_matrix, data_label, m):
@@ -56,7 +54,7 @@ def minimize_stochastic(file_name, target_function, gradient_function, iteration
     min_theta, min_value = None, float("inf")
     iterations_num = 0
     while iterations_num < iterations:
-        value = target_function(theta, lamda, data_matrix, data_label, m)
+        # value = target_function(theta, lamda, data_matrix, data_label, m)
         # if value < min_value:
         #     min_theta, min_value = theta, value
         #     alpha = alpha_0
@@ -71,25 +69,31 @@ def minimize_stochastic(file_name, target_function, gradient_function, iteration
 
 
 def calculate_probability(theta, x):
-    # return float(exp(dot(theta, x.T))) / float(1 + exp(dot(theta, x.T)))
-    return 1 / float(1 + exp(dot(theta, x.T)))
+    # return exp(dot(theta, x.T)) / float(1 + exp(dot(theta, x.T)))
+    return 1 / (1 + exp(dot(theta, x.T)))
 
 
-file_name = 'training1.txt'
+def calculate_error(data_matrix, data_label, theta, m):
+    count = 0
+    calculate_label = []
+    for i in range(0, m - 1):
+        if calculate_probability(theta, data_matrix[i]) >= 0.5:
+            calculate_label.append(1)
+        else:
+            calculate_label.append(-1)
+        if calculate_label[i] == data_label[i]:
+            count += 1
+    return count / float(m)
+
+
+file_name = 'training2.txt'
 data_matrix, data_label = load_data(file_name)
 m, n = data_matrix.shape
 # theta = minimize_stochastic(
 #     file_name, ridge_regression, gradient_ridge_regression, 100)
 theta = minimize_stochastic(
-    file_name, log_likelihood, gradient_log_likelihood, 10000)
-count = 0
-calculate_label = []
-for i in range(0, m - 1):
-    if calculate_probability(theta, data_matrix[i]) > 0.5:
-        calculate_label.append(1)
-    else:
-        calculate_label.append(-1)
-    if calculate_label[i] == data_label[i]:
-        count += 1
+    file_name, log_likelihood, gradient_log_likelihood, 100)
+data_matrix_test, data_label_test = load_data('testing2.txt')
 
-print count
+print calculate_error(data_matrix, data_label, theta, m)
+print calculate_error(data_matrix_test, data_label_test, theta, m)

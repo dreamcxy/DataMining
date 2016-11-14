@@ -42,4 +42,9 @@ data_matrix, data_label = load_data('test.txt')
 m, n = data_matrix.shape
 theta = ones(n)
 print log_likelihood(theta, 0, data_matrix, data_label)
-print data_matrix[0]
+print sum(data_matrix[2])
+print data_matrix[2]
+count = 0
+for i in range(0,data_matrix[2].shape[0]):
+    count  += data_matrix[2][i]
+print count
