@@ -7,7 +7,7 @@ def load_data(file_name):
     data_matrix = []
     data_label = []
     with open(file_name, 'r') as dataFile:
-        data_lines = dataFile.readlines()
+        data_lines = dataFile.readlines()[1000:11000]
         for line in data_lines:
             data = map(float, line.split(','))
             data_matrix.append(data[:-1])
@@ -86,14 +86,14 @@ def calculate_error(data_matrix, data_label, theta, m):
     return count / float(m)
 
 
-file_name = 'training2.txt'
+file_name = 'training1.txt'
 data_matrix, data_label = load_data(file_name)
 m, n = data_matrix.shape
 # theta = minimize_stochastic(
 #     file_name, ridge_regression, gradient_ridge_regression, 100)
 theta = minimize_stochastic(
-    file_name, log_likelihood, gradient_log_likelihood, 100)
-data_matrix_test, data_label_test = load_data('testing2.txt')
+    file_name, ridge_regression, gradient_ridge_regression, 1000)
+data_matrix_test, data_label_test = load_data('testing1.txt')
 
 print calculate_error(data_matrix, data_label, theta, m)
 print calculate_error(data_matrix_test, data_label_test, theta, m)
