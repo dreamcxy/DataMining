@@ -7,7 +7,7 @@ def load_data(file_name):
     data_matrix = []
     data_label = []
     with open(file_name, 'r') as dataFile:
-        data_lines = dataFile.readlines()[1000:11000]
+        data_lines = dataFile.readlines()
         for line in data_lines:
             data = map(float, line.split(','))
             data_matrix.append(data[:-1])
@@ -28,7 +28,8 @@ def gradient_log_likelihood(data_matrix, data_label, lamda, theta, m):
 
 def gradient_ridge_regression(data_matrix, data_label, lamda, theta, m):
     i = random.randint(0, m - 1)
-    return (2 * sum(data_matrix[i]) * (dot(theta, data_matrix[i].T) - data_label[i]) + 2 * lamda * sum(data_matrix[i])) / m
+    return (2 * sum(data_matrix[i]) * (dot(theta, data_matrix[i].T) - data_label[i]) + 2 * lamda * sum(
+        data_matrix[i])) / m
 
 
 def upgrade_theta(theta, alpha, gradient_function, data_matrix, data_label, lamda, m):
@@ -86,14 +87,15 @@ def calculate_error(data_matrix, data_label, theta, m):
     return count / float(m)
 
 
-file_name = 'training1.txt'
-data_matrix, data_label = load_data(file_name)
+file_name_train = 'training1.txt'
+file_name_test = 'testing1.txt'
+data_matrix, data_label = load_data(file_name_train)
 m, n = data_matrix.shape
 # theta = minimize_stochastic(
 #     file_name, ridge_regression, gradient_ridge_regression, 100)
 theta = minimize_stochastic(
     file_name, ridge_regression, gradient_ridge_regression, 1000)
-data_matrix_test, data_label_test = load_data('testing1.txt')
+data_matrix_test, data_label_test = load_data(file_name_test)
 
 print calculate_error(data_matrix, data_label, theta, m)
 print calculate_error(data_matrix_test, data_label_test, theta, m)
