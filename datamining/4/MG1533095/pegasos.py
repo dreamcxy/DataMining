@@ -4,7 +4,6 @@ import random
 from math import e
 
 def loadDataSet(fileName):
-    #载入数据集
     dataMat = []
     label = []
     fr = open(fileName)
@@ -17,7 +16,6 @@ def loadDataSet(fileName):
     return array(dataMat), array(label)
 
 def hinge(fileName, lamda, num):
-    #用hinge-loss函数实现SGD
     feature, label = loadDataSet(fileName)
     m, n = feature.shape
     w = array([0] * n)
@@ -31,7 +29,6 @@ def hinge(fileName, lamda, num):
     return w
 
 def log(fileName, lamda, num):
-    #用log-loss函数实现SGD
     feature, label = loadDataSet(fileName)
     m, n = feature.shape
     w = array([0] * n, dtype = float)
@@ -43,7 +40,6 @@ def log(fileName, lamda, num):
     return w
 
 def test(fileName, w):
-    #检测算法的错误率
     testFeature, testLabel = loadDataSet(fileName)
     m, n = testFeature.shape
     correct = 0
@@ -53,7 +49,6 @@ def test(fileName, w):
     return 1 - correct/m
 
 def main():
-    #主程序调用算法
     trainingFileName = ["dataset1-a8a-training.txt", "dataset1-a9a-training.txt"]
     testFileName = ["dataset1-a8a-testing.txt", "dataset1-a9a-testing.txt"]
     lamda = [1e-4, 5e-5]
@@ -61,15 +56,16 @@ def main():
     for i in range(2):
         print("dataset", str(i+1), ",hinge function:")
         radio = []
-        for j in range(10):
-            w = hinge(trainingFileName[i], lamda[i], int(T[i] / 10 * (j + 1)))
+        for j in range(1,100):
+            # w = hinge(trainingFileName[i], lamda[i], int(T[i] / 10 * (j + 1)))
+            w = hinge(trainingFileName[i], lamda[i], int(i*100))
             radio.append(test(testFileName[i], w))
         print(radio)
     for i in range(2):
         print("dataset", str(i+1), ",log function:")
         radio = []
-        for j in range(10):
-            w = log(trainingFileName[i], lamda[i], int(T[i] / 10 * (j + 1)))
+        for j in range(1,10):
+            w = log(trainingFileName[i], lamda[i], int(i*100))
             radio.append(test(testFileName[i], w))
         print(radio)
 
