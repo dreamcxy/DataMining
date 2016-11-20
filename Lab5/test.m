@@ -1,1 +1,3 @@
-length(dataset1.feature1)
+a = [1,2,3,4;1,2,4,4];
+b = prod(a,2)
+b(1)
