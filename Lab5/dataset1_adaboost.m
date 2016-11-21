@@ -122,7 +122,7 @@ literations = 6;
 weight = ones(literations, TESTLENGTH)/TESTLENGTH;
 alpha = zeros(literations, 1);
 count = zeros(literations, TESTLENGTH);
-for m = 1:literations - 1
+% for m = 1:literations - 1
     
     for i  = 1:TESTLENGTH
         features(i,1) = dataset1.feature1(i);
@@ -180,19 +180,21 @@ for m = 1:literations - 1
         [degreeProbability, degreePosition] = max(guessProbability);
         bayesDegree(i) = DEGREE(degreePosition);
         if bayesDegree(i) ~= dataset1.label(i)
-            countError = (countError + 1) * weight(m, i);    
+            countError = (countError + 1) ;    
         end
-        alpha(m,1) = log(double((1-countError)/countError));
-        if bayesDegree(i) == dataset1.label(i)
-            weight(m+1, i) = weight(m, i)*exp(-alpha(m, 1));
-        else
-            weight(m+1, i) = weight(m, i)*exp(alpha(m, 1));
-        end
-        weight(m+1, i) = weight(m+1, i)/sum(weight(m+1, i));
-        count(m, i) = count(m, i) + alpha(m, 1)*bayesDegree(i);
+        
+%         alpha(m,1) = log(double((1-countError)/countError));
+%         if bayesDegree(i) == dataset1.label(i)
+%             weight(m+1, i) = weight(m, i)*exp(-alpha(m, 1));
+%         else
+%             weight(m+1, i) = weight(m, i)*exp(alpha(m, 1));
+%         end
+%         weight(m+1, i) = weight(m+1, i)/sum(weight(m+1, i));
+%         count(m, i) = count(m, i) + alpha(m, 1)*bayesDegree(i);
     end
-end
-sign(count)
+    countError
+% end
+% sign(count)
 
 
 
