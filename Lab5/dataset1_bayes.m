@@ -1,4 +1,4 @@
-function bayesdegree  = bayes( trainset, testset, DEGREE)
+function bayesdegree  = dataset1_bayes( trainset, testset, DEGREE)
     trainlength = length(trainset.feature1);
     maxFeature1 = max(trainset.feature1);
     maxFeature2 = max(trainset.feature2);
