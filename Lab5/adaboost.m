@@ -1,4 +1,4 @@
-literations = 3;
+literations = 6;
 accuracy = zeros(10 ,1);
 for i = 1:10
     if i == 1
