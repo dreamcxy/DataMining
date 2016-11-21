@@ -1,4 +1,4 @@
-literations = 2;
+literations = 3;
 accuracy = zeros(10 ,1);
 for i = 1:10
     if i == 1
@@ -21,15 +21,15 @@ for i = 1:10
                 apsl(m,1) = apsl(m,1) + weight(m, j) * abs(bayesdegree(j) - testset.label(j));
             end
         end
-        alpha(m, 1) = log(double((1 - apsl(m, 1)/apsl(m,1))));
+        alpha(m, 1) = log((1 - apsl(m, 1))/apsl(m,1));
         for j = 1: testlength
             if bayesdegree(j) == testset.label(j)
                 weight(m+1, j) = weight(m, j)*exp(-alpha(m, 1));
             else
                 weight(m+1, j) = weight(m, j)*exp(alpha(m, 1));
             end
-            weight(m+1, j) = weight(m+1, j)/sum(weight(m+1,j));
         end
+        weight(m+1, :) = weight(m+1, :)/sum(weight(m+1,:));
         mthbayesdegree = mthbayesdegree + alpha(m, 1)*bayesdegree;
     end
     Mbayesdegree = sign(mthbayesdegree);
