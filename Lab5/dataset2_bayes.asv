@@ -1,6 +1,6 @@
 function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
-    trainlength = length(trainset.feature1);
-    proofdegree = zeros(1, length(DEGREE));
+    trainlength = length(trainset.VarName1);
+    proofdegree = zeros(1, length(degree));
     countError = 0;
     grade = 4;
     countFeature1 = zeros(grade, length(DEGREE));
@@ -40,7 +40,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1: grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature1(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre1(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature1(i,k) = countFeature1(i,k) + 1;
                 end
             end
@@ -49,7 +49,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1: grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature2(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre2(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature2(i,k) = countFeature2(i,k) + 1;
                 end
             end
@@ -58,7 +58,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
             for k = 1: length(DEGREE)
-                if judgegrade(trainset.feature3(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre3(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature3(i,k) = countFeature3(i,k) + 1;
                 end
             end
@@ -67,7 +67,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
            for k = 1:length(DEGREE)
-               if judgegrade(trainset.feature4(j)) == i && trainset.label(j) == DEGREE(k)
+               if judge(trainset.featre4(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature4(i,k) = countFeature4(i,k) + 1;
                end
            end
@@ -76,7 +76,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature5(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre5(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature5(i,k) = countFeature5(i,k) + 1;
                 end
             end
@@ -85,7 +85,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1: trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature6(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre6(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature6(i,k) = countFeature6(i,k) + 1;
                 end
             end
@@ -94,7 +94,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature7(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre7(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature7(i,k) = countFeature7(i,k) + 1;
                 end
             end
@@ -103,7 +103,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j= 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature8(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre8(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature8(i,k) = countFeature8(i,k) + 1;
                 end
             end
@@ -112,7 +112,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i= 1:grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature9(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre9(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature9(i,k) = countFeature9(i,k) + 1;
                 end
             end
@@ -121,7 +121,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature10(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre10(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature10(i,k) = countFeature10(i,k) + 1;
                 end
             end
@@ -130,7 +130,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature11(j)) == i && trainset.label(j) == DEGREE(k)
+                if judge(trainset.featre11(j)) == i && trainset.label(j) == DEGREE(k)
                     countFeature11(i,k) = countFeature11(i,k) + 1;
                 end
             end
@@ -139,7 +139,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:grade
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if judgegrade(trainset.feature12(j)) == i && trainset.label(j) == DEGREE(k) 
+                if judge(trainset.featre12(j)) == i && trainset.label(j) == DEGREE(k) 
                     countFeature12(i,k) = countFeature12(i,k) + 1;
                 end
             end
@@ -221,7 +221,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1:max(trainset.feature21)
         for j = 1:trainlength
             for k = 1:length(DEGREE)
-                if trainset.feature21(j) == i-1 && trainset.label(j) == DEGREE(k)
+                if trainset.feature21(j) == i-1 && traisnet.label(j) == DEGREE(k)
                     countFeature21(i,k) = countFeature21(i,k) + 1;
                 end
             end
@@ -231,7 +231,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
         for j = 1:trainlength
             for k = 1 : length(DEGREE)
                 if trainset.feature22(j) == i-1 && trainset.label(j) == DEGREE(k)
-                    countFeature22(i,k) = countFeature22(i,k) + 1;
+                    countFeature22(i,k) = countFeature(i,k) + 1;
                 end
             end
         end
@@ -239,7 +239,7 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
     for i = 1: max(trainset.feature23)
        for j=  1:trainlength
             for k = 1:length(DEGREE)
-                if trainset.feature23(j) == i-1 && trainset.label(j) == DEGREE(k)
+                if trainset.feature23(i,k) == i-1 && trainset.label(j) == DEGREE(k)
                     countFeature23(i,k) = countFeature23(i,k) + 1;
                 end
             end
@@ -370,24 +370,19 @@ function bayesdegree = dataset2_bayes(trainset, testset, DEGREE)
                     && judgegrade(trainset.feature11(j)) == judgegrade(features(i,11)) && judgegrade(trainset.feature12(j)) == judgegrade(features(i,12))...
                     && trainset.feature13(j) == features(i,13) && trainset.feature14(j) == features(i,14) && trainset.feature15(j) == features(i,15)...
                     && trainset.feature16(j) == features(i,16) && trainset.feature17(j) == features(i,17) && trainset.feature18(j) == features(i,18)...
-                    && trainset.feature19(j) == features(i,19) && trainset.feature20(j) == features(i,20) && trainset.feature21(j) == features(i,21)...
-                    && trainset.feature22(j) == features(i,22) && trainset.feature23(j) == features(i,23) && trainset.feature24(j) == features(i,24)
+                    && trainset.feature19(j) == features(i,19) && trainset.feature20(j) == features(i,20) && trainset.feature21(j) =-
                 countsame(i) = countsame(i) + 1;
-            end    
+            end
+            
+            
+            
+            
+            
         end
-        guessprobability = zeros(length(DEGREE), 1);
-        probability = prod(pro);
-        for k = 1:length(DEGREE)
-            guessprobability(k) = double((probability(k))/(countsame(i)*proofdegree(k)^23));
-        end
-        [~, degreeposititon] = max(guessprobability);
-        bayesdegree(i) = DEGREE(degreeposititon);
-        if bayesdegree(i) ~= testset.label(i)
-            countError = countError + 1;
-        end
-    end
     
     
+    
+   
 end
 
 
