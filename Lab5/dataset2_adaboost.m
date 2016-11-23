@@ -18,10 +18,10 @@ for i = 1:10
         bayesdegree = dataset2bayes(trainset, testset, [1,-1]');
         for j = 1: testlength
             if bayesdegree(j) ~= testset.label(j)
-                apsl(m,1) = apsl(m,1) + weight(m, j) * abs(bayesdegree(j) - testset.label(j));
+                apsl(m,1) = apsl(m,1) + weight(m, j) * abs(bayesdegree(j) - testset.label(j))/2;
             end
         end
-        alpha(m, 1) = log((1 - apsl(m, 1))/apsl(m,1));
+        alpha(m, 1) = double(log((1 - apsl(m, 1))/apsl(m,1)));
         for j = 1: testlength
             if bayesdegree(j) == testset.label(j)
                 weight(m+1, j) = weight(m, j)*exp(-alpha(m, 1));
